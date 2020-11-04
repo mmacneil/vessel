@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Title>Vessel</Title>
+    <Authors>Mark Macneil</Authors>
+    <Description>A tiny utility lib for creating simple, lightweight in-memory DTOs.</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/mmacneil/vessel.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageProjectUrl>https://github.com/mmacneil/vessel</PackageProjectUrl>
+  </PropertyGroup>
+
+</Project>

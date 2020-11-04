@@ -2,7 +2,7 @@
 
 namespace Vessel
 {
-    public interface ITransferObject<out T>
+    public interface IDto<out T>
     {
         Status Status { get; }
         IEnumerable<string> Errors { get; }

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Net;
+using Vessel.Extensions;
 
 
 namespace Vessel
@@ -33,14 +35,19 @@ namespace Vessel
             return new Dto<T>(Status.Failed) { Errors = errorMessages };
         }
 
-        public static Dto<T> Failed(Status resultStatus, params string[] errorMessages)
+        public static Dto<T> Failed(Status status, params string[] errorMessages)
         {
-            return new Dto<T>(resultStatus) { Errors = errorMessages };
+            return new Dto<T>(status) { Errors = errorMessages };
         }
 
-        public static Dto<T> Failed(Status resultStatus, Exception exception, params string[] errorMessages)
+        public static Dto<T> Failed(Status status, Exception exception, params string[] errorMessages)
         {
-            return new Dto<T>(resultStatus) { Errors = errorMessages, Exception = exception };
+            return new Dto<T>(status) { Errors = errorMessages, Exception = exception };
+        }
+
+        public static Dto<T> Failed(HttpStatusCode httpStatusCode, Exception exception, params string[] errorMessages)
+        {
+            return new Dto<T>(httpStatusCode.ToStatus()) { Errors = errorMessages, Exception = exception };
         }
     }
 }

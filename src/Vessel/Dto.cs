@@ -45,9 +45,16 @@ namespace Vessel
             return new Dto<T>(status) { Errors = errorMessages, Exception = exception };
         }
 
+        #region HttpStatusCode overrides
+        public static Dto<T> Failed(HttpStatusCode httpStatusCode, params string[] errorMessages)
+        {
+            return new Dto<T>(httpStatusCode.ToStatus()) { Errors = errorMessages };
+        }
+
         public static Dto<T> Failed(HttpStatusCode httpStatusCode, Exception exception, params string[] errorMessages)
         {
             return new Dto<T>(httpStatusCode.ToStatus()) { Errors = errorMessages, Exception = exception };
         }
+        #endregion
     }
 }

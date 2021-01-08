@@ -25,9 +25,9 @@ namespace Vessel
             Status = status;
         }
 
-        public static Dto<T> Success(T value)
+        public static Dto<T> Success(T payload)
         {
-            return new Dto<T>(value);
+            return new Dto<T>(payload);
         }
 
         public static Dto<T> Failed(params string[] errorMessages)
@@ -43,6 +43,11 @@ namespace Vessel
         public static Dto<T> Failed(Status status, Exception exception, params string[] errorMessages)
         {
             return new Dto<T>(status) { Errors = errorMessages, Exception = exception };
+        }
+
+        public static Dto<T> Failed(Exception exception)
+        {
+            return new Dto<T>(Status.Failed) { Exception = exception };
         }
 
         #region HttpStatusCode overrides
